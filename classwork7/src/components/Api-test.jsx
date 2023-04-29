@@ -1,4 +1,4 @@
-const { useState } = require("react");
+const { useState, useEffect } = require("react");
 
 const ApiTest = () => {
 
@@ -25,10 +25,22 @@ const ApiTest = () => {
 
     }
 
+    useEffect (() => {
+        NBAPlayer()
+    }, [])
+
     console.log(teamData);
 
     return (
-        <button onClick={NBAPlayer}>Тест</button>
+        <div>
+            <button onClick={NBAPlayer}>Тест</button>
+            {teamData.map((el, i) => {
+                return <div key={el.id}>
+                   {i + 1}. {el.city} {el.abbreviation}
+                </div>
+            })}
+        </div>
+        
     )
 
 
