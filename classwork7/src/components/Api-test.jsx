@@ -2,7 +2,7 @@ const { useState } = require("react");
 
 const ApiTest = () => {
 
-    const [team, setTeam] = useState([])
+    const [teamData, setTeamData] = useState([])
 
     const NBAPlayer = () => {
         const options = {
@@ -18,14 +18,14 @@ const ApiTest = () => {
         fetch("https://free-nba.p.rapidapi.com/teams?page=0", options)
         .then(response => response.json())
         .then(response => {
-            console.log(response);
-            setTeam(response.data)
+            // console.log(response);
+            setTeamData(response.data)
         })
         .catch(err => console.error(err));
 
     }
 
-    console.log(team);
+    console.log(teamData);
 
     return (
         <button onClick={NBAPlayer}>Тест</button>
